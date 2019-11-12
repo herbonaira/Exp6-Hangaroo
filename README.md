@@ -23,3 +23,34 @@ def getAvailableLetters(lettersGuessed):
         if char == lettersGuessed:
             x.remove(char)
             print(x)
+            
+def Hangaroo(secretWord):
+
+    mistakesMade = 0
+    lettersGuessed = set()
+    i = 1
+    while  i == 1:
+        x = input('Input letter here: ')
+        while len(x) > 1 or x in lettersGuessed:
+            if x in lettersGuessed:
+                print('This has already been guessed - so try again!')
+            else:
+                print('This is not a letter! Try again!')
+            imput = input('Input letter here: ')
+        lettersGuessed.add(x)
+        if isWordGuessed(secretWord,lettersGuessed) is True:
+             print("You've Guessed it!")
+             print(" ")
+             print("Secret word is ", secretWord)
+             mistakesMade = 0
+             break
+        elif isWordGuessed(secretWord, lettersGuessed) is True:
+             print("mistakesMade: ",mistakesMade )
+             mistakesMade += 1
+             print(" ")
+             print("Guess left: ")
+             getGuessedWord(secretWord, lettersGuessed)
+             print (" ")
+             print ("Letters left: ")
+             getAvailableLetters (lettersGuessed)
+             print('End of the Game') 
